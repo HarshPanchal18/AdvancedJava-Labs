@@ -1,21 +1,14 @@
 package org.example.Assignment3;
 
 public class Vehicle {
-    private String make;
     private String model;
     private int year;
 
-    public Vehicle(String make, String model, int year) {
-        this.make = make;
+    public Vehicle() {}
+
+    public Vehicle(String model, int year) {
         this.model = model;
         this.year = year;
-    }
-
-    public String getMake() {
-        return make;
-    }
-    public void setMake(String make) {
-        this.make = make;
     }
 
     public String getModel() {
