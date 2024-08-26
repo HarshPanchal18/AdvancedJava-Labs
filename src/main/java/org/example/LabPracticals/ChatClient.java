@@ -6,19 +6,19 @@ import java.net.Socket;
 public class ChatClient {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("localhost", 6000);
-        System.out.println("Client is online");
+        System.out.println("Client is online...");
 
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int i;
+        String message;
         do {
-            i = br.read();
-            System.out.println((char) i);
-            out.writeChar(i);
-        } while ((char) i != 'q');
+            message = br.readLine();
+            out.writeUTF(message);
+            System.out.println(message);
+        } while (!message.equalsIgnoreCase("stop"));
 
-        System.out.println("Terminated connection");
+        System.out.println("Terminated connection...");
 
         br.close();
         out.close();
