@@ -12,6 +12,7 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    runtimeOnly("mysql:mysql-connector-java:8.0.+")
 }
 
 tasks.test {
