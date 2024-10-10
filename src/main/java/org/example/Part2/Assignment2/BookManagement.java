@@ -42,4 +42,42 @@ public class BookManagement {
         }
     }
 
+    public static void insertBook(Connection connection, String title, String author, double price) {
+        String insertBookQuery = "INSERT INTO Book (title, author, price) VALUES (?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertBookQuery)) {
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, author);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.executeUpdate();
+            System.out.println("Book inserted successfully");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateBook(Connection connection, int id, double price) {
+        String updateQuery = "UPDATE Book SET price = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+            preparedStatement.setDouble(1, price);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            System.out.println("Book updated successfully");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteBook(Connection connection, int id) {
+        String deleteBookQuery = "DELETE FROM Book WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(deleteBookQuery)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            System.out.println("Book updated successfully");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
