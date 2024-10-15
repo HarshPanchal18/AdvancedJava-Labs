@@ -15,17 +15,17 @@ public class BookManagement {
             Connection connection = DriverManager.getConnection(url, user, password);
             createBookTable(connection);
 
+            insertBook(connection, "Book1", "Harsh", 26);
+            getBooks(connection);
+
             connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
     }
 
     public static void createBookTable(Connection connection) {
-        try {
-            Statement statement = connection.createStatement();
-
+        try (Statement statement = connection.createStatement()) {
             String createBookQuery = "CREATE TABLE IF NOT EXISTS Book (" +
                     "id INT PRIMARY KEY AUTO_INCREMENT, " +
                     "title VARCHAR(255), " +
@@ -35,10 +35,8 @@ public class BookManagement {
             statement.execute(createBookQuery);
             System.out.println("Book Table created");
 
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -52,7 +50,6 @@ public class BookManagement {
             System.out.println("Book inserted successfully");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -65,7 +62,6 @@ public class BookManagement {
             System.out.println("Book updated successfully");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -78,6 +74,20 @@ public class BookManagement {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    public static void getBooks(Connection connection) {
+        String bookQuery = "SELECT * FROM Book";
+        try (PreparedStatement ps = connection.prepareStatement(bookQuery)) {
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                System.out.printf("%d %s %s%n", rs.getInt("id"), rs.getString("title"), rs.getString("author"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
