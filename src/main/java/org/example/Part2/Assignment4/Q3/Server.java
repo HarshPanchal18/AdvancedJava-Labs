@@ -1,5 +1,7 @@
 package org.example.Part2.Assignment4.Q3;
 
+import org.example.util.Constant;
+
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -12,7 +14,7 @@ public class Server {
             SysInfo stub = (SysInfo) UnicastRemoteObject.exportObject(si, 0);
 
             Registry registry = LocateRegistry.createRegistry(1098);
-            registry.rebind("SysInfo", stub);
+            registry.rebind(Constant.SYS_INFO, stub);
 
             System.out.println("Server ready");
         } catch (Exception e) {

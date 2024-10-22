@@ -1,5 +1,7 @@
 package org.example.Part2.Assignment4.Q3;
 
+import org.example.util.Constant;
+
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -9,9 +11,10 @@ public class Client {
     public static void main(String[] args) {
 
         try {
-            Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1098);
 
-            SysInfo stub = (SysInfo) registry.lookup("SysInfo");
+            Registry registry = LocateRegistry.getRegistry(Constant.HOST, 1098);
+
+            SysInfo stub = (SysInfo) registry.lookup(Constant.SYS_INFO);
 
             String osVersion = stub.getOsVersion();
             System.out.println("OS Version: " + osVersion);
@@ -38,7 +41,6 @@ public class Client {
             System.err.println("Remote exception: " + e.getMessage());
         } catch (Exception e) {
             System.err.println("Client exception: " + e.getMessage());
-            System.out.println(e.getMessage());
         }
     }
 }
