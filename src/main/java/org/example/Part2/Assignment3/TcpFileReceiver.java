@@ -19,7 +19,7 @@ public class TcpFileReceiver {
             dis = new DataInputStream(clientSocket.getInputStream());
             DataOutputStream dos = new DataOutputStream(clientSocket.getOutputStream());
 
-            receiveFile("Received.txt");
+            receiveFile("ReceivedTCPFile.txt");
 
             System.out.println("Received file");
 

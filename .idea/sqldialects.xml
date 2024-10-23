@@ -2,5 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/org/example/Part2/Assignment2/BookManagement.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/Part2/Assignment4/Q2/BookDbImpl.java" dialect="GenericSQL" />
   </component>
 </project>

@@ -20,7 +20,7 @@ public class Client {
             System.out.println("OS Version: " + osVersion);
 
             long response = stub.getTotalDiskSpace();
-            System.out.println("Free disk space: " + response);
+            System.out.println("Total disk space: " + response);
 
             response = stub.getFreeDiskSpace();
             System.out.println("Free disk space: " + response);

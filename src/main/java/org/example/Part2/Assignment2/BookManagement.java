@@ -1,21 +1,21 @@
 package org.example.Part2.Assignment2;
 
+import org.example.util.Constant;
+
 import java.sql.*;
 
 public class BookManagement {
+
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/book_db";
-        String user = "root";
-        String password = "";
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(Constant.MYSQL_DRIVER);
 
-            Connection connection = DriverManager.getConnection(url, user, password);
+            Connection connection = DriverManager.getConnection(Constant.BOOK_DB_URL, Constant.DB_USERNAME, Constant.DB_PASSWORD);
             createBookTable(connection);
 
-            insertBook(connection, "Book1", "Harsh", 26);
+            // insertBook(connection, "Book1", "Harsh", 26);
             getBooks(connection);
 
             connection.close();
@@ -90,4 +90,5 @@ public class BookManagement {
             System.out.println(e.getMessage());
         }
     }
+
 }
