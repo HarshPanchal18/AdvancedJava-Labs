@@ -18,6 +18,17 @@ public class BookManagement {
             // insertBook(connection, "Book1", "Harsh", 26);
             getBooks(connection);
 
+            DatabaseMetaData dbMetaData = connection.getMetaData();
+            try (
+                    ResultSet rs = dbMetaData.getTables(null, null, null, new String[]{"TABLE"})
+            ) {
+                while (rs.next()) {
+                    String tableName = rs.getString("TABLE_NAME");
+                    String remarks = rs.getString("REMARKS");
+                }
+            } catch (Exception e) {
+            }
+
             connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
