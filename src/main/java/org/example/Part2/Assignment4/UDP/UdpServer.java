@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class UdpServer {
 
     public static void main(String[] args) throws IOException {
-        DatagramSocket serverSocket = new DatagramSocket(Integer.parseInt("5001"));
+        DatagramSocket serverSocket = new DatagramSocket(5001);
         System.out.println("Server Started. Listening for Clients on port 5001" + "...");
 
         // Assume messages are not over 1024 bytes

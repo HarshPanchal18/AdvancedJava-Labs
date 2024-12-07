@@ -13,7 +13,8 @@ public class BookManagement {
             Class.forName(Constant.MYSQL_DRIVER);
 
             Connection connection = DriverManager.getConnection(Constant.BOOK_DB_URL, Constant.DB_USERNAME, Constant.DB_PASSWORD);
-            createBookTable(connection);
+            System.out.println("Connected to database");
+            /*createBookTable(connection);
 
             // insertBook(connection, "Book1", "Harsh", 26);
             getBooks(connection);
@@ -27,7 +28,7 @@ public class BookManagement {
                     String remarks = rs.getString("REMARKS");
                 }
             } catch (Exception e) {
-            }
+            }*/
 
             connection.close();
         } catch (Exception e) {
